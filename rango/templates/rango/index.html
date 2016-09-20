@@ -6,10 +6,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Rango</title>
-    <!-- CSS -->
-    <link rel="stylesheet" href="{% static "css/base.css" %}" />
-    <!-- JavaScript -->
-    <script src="{% static "js/jquery.js" %}"></script>
 </head>
 <body>
     <h1>Rango says...</h1>
@@ -18,7 +14,32 @@
         <strong>{{ boldmessage }}</strong><br />
     </div>
     <div>
-        <a href="/rango/about/">About</a><br />
+        {% if categories %}
+            <h1>Most Liked Categories</h1>
+            <ul>
+                {% for category in categories %}
+                <li>
+                    <a href="/rango/category/{{ category.slug }}">{{ category.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <strong>There are no categories present.</strong>
+        {% endif %}
+    </div>
+    <div>
+        {% if most_viewed_pages %}
+            <h1>Most Viewed Pages</h1>
+            <ul>
+                {% for page in most_viewed_pages %}
+                    <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+    <div>
+        <a href={% url 'about' %}>About</a><br />
         <img src="{% static "rango/images/rango.jpg" %}" alt="Picture of Rango" height="300"/>
     </div>
 </body>
