@@ -17,6 +17,7 @@
             {% else %}
                 <strong>No pages currently in category.</strong>
             {% endif %}
+            <a href={% url 'add_page' category.slug %}>Add a page</a>
         {% else %}
             The specified category does not exit!
         {% endif %}
