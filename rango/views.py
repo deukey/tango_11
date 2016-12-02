@@ -82,7 +82,7 @@ def add_page(request, category_name_slug):
     context_dict = {'form': form, 'category': category}
     return render(request, 'rango/add_page.html', context_dict)
 
-
+"""
 def register(request):
     registered = False
 
@@ -136,7 +136,7 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('index')
-
+"""
 
 @login_required
 def restricted(request):
